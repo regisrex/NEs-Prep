@@ -1,0 +1,50 @@
+{
+  "name": "bonbon-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "standard": "npx standard ./*/**.ts --fix",
+    "dev": "nodemon  --watch src --watch ./index.ts --exec 'tsc  && node dist/index.js'",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "test": "vitest --no-watch",
+    "test:watch": "vitest",
+    "swagger:generate": "ts-node ./swagger/swagger.ts"
+  },
+  "author": "regisrex <https://regisndizihiwe.me>",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.5.2",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.7",
+    "pg": "^8.11.3",
+    "prisma": "^5.5.2",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0",
+    "typescript": "^5.2.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.1",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.20",
+    "@types/jsonwebtoken": "^9.0.4",
+    "@types/knex": "^0.16.1",
+    "@types/morgan": "^1.9.7",
+    "@types/node": "^20.8.9",
+    "@types/nodemailer": "^6.4.13",
+    "@types/supertest": "^2.0.15",
+    "@types/swagger-ui-express": "^4.1.5",
+    "@vitest/coverage-v8": "^0.34.6",
+    "nodemon": "^3.0.1",
+    "standard": "^17.1.0",
+    "supertest": "^6.3.3",
+    "ts-node": "^10.9.1",
+    "vitest": "^0.34.6"
+  }
+}
