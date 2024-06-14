@@ -27,38 +27,9 @@ model Client {
   tin            String
   account        String
   email          String    @unique
-  invoices       Invoice[]
   phone          String
   caution        BigInt
-  m2             BigInt
   startDate      DateTime  @db.Date
   endDate        DateTime  @db.Date
   amount         BigInt
-}
-
-model Invoice {
-  id       String  @id @default(uuid())
-  month    Month
-  year     Int
-  isPaid   Boolean @default(false)
-  dueDate  String //  date in string format
-  clientId String
-  client   Client  @relation(fields: [clientId], references: [id])
-
-  @@unique([clientId, month, year])
-}
-
-enum Month {
-  JAN
-  FEB
-  MAR
-  APR
-  MAY
-  JUN
-  JUL
-  AUG
-  SEP
-  OCT
-  NOV
-  DEC
 }

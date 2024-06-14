@@ -4,6 +4,17 @@ import prisma from "../../utils/prisma";
 import { CreateClientSchema, UpdateClientSchema } from "./schema";
 
 export async function createClient(req: Request, res: Response, next: NextFunction) {
+       /*  #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/CreateClientDto"
+                    }  
+                }
+            }
+        } 
+    */
     try {
         const rawBody = CreateClientSchema.parse(req.body)
         const client = await prisma.client.create({
@@ -19,6 +30,17 @@ export async function createClient(req: Request, res: Response, next: NextFuncti
 
 
 export async function updateClient(req: Request, res: Response, next: NextFunction) {
+       /*  #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/UpdateClientDto"
+                    }  
+                }
+            }
+        } 
+    */
     try {
         const rawBody = UpdateClientSchema.parse(req.body)
         const id = req.params['id'];

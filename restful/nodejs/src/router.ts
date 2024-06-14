@@ -4,7 +4,7 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger/swagger.json';
 import middlewares from "./middlewares";
 import { authMiddleware } from "./middlewares/authMiddleware";
-import { authModule, clientsModule, invoicesModule } from "./modules";
+import { authModule, clientsModule } from "./modules";
 
 const router = Router()
 const customCss = readFileSync('swagger.css', 'utf8')
@@ -14,11 +14,8 @@ router.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { customCs
 router.use('/auth', authModule)
 router.use('*', authMiddleware)
 router.use('/clients', clientsModule)
-router.use('/invoices', invoicesModule)
 
-// swagger api setup
-
-
+// swagger documentation setup
 router.use(middlewares.notFound)
 router.use(middlewares.errorHandler)
 

@@ -15,6 +15,7 @@ async function bootStrap() {
     const server = app.listen(env.PORT, () => {
         console.log(`Server running on port ${env.PORT}`)
     })
+
     function killServer() {
         prisma.$disconnect()
             .then(() => {

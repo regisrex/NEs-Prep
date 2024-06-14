@@ -7,6 +7,17 @@ import { CreateAdminSchema, LoginSchema } from "./schemas"
 
 
 export async function createAdmin(req: Request, res: Response, next: NextFunction) {
+    /*  #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/CreateAdminDto"
+                    }  
+                }
+            }
+        } 
+    */
     try {
         const rawBody = CreateAdminSchema.parse(req.body)
         if (rawBody.password != rawBody.confirmPassword) throw new Error("Passwords mismatch")
@@ -37,6 +48,17 @@ export async function createAdmin(req: Request, res: Response, next: NextFunctio
 
 
 export async function login(req: Request, res: Response, next: NextFunction) {
+   /*  #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/LoginDto"
+                    }  
+                }
+            }
+        } 
+    */
     try {
         const rawBody = LoginSchema.parse(req.body)
         const admin = await prisma.admin.findFirst({
