@@ -1,5 +1,5 @@
-## bonbon-api
-BE for bonbon house clients management system.
+##  NE API
+With admin and clients module
 
 [![ci](https://github.com/regisrex/bonbon/actions/workflows/ci.yml/badge.svg)](https://github.com/regisrex/bonbon/actions/workflows/ci.yml)
 #### Tools
