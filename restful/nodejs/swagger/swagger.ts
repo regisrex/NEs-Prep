@@ -12,6 +12,16 @@ const doc = {
     },
     // { ... }
   ],
+  tags: [
+    {
+      name: "Auth",
+      descrption: "Authentication endpoints"
+    },
+    {
+      name: "Clients",
+      descrption: "Clients endpoints"
+    },
+  ],
   components: {
     schemas: {
       CreateAdminDto: {

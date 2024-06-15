@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/learnsecuriy"
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-plaform: org.hibernate.dialect.PostgreSQLDialect
+  app:
+    jwt-secret: "mfAUgxcMaZ2D6TIB2uv85nSBDDDTSTpI6yomfnrWF3YmfAUgxcMaZ2D6TIB2uv85nSBDDDTSTpI6yomfnrWF3Y"
