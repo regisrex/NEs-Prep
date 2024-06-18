@@ -1,15 +1,14 @@
-import express, { json } from "express";
-import appRouter from "./router";
+import express from "express";
+import baseRouter from './router';
 import { env } from "./utils/env";
 import prisma from './utils/prisma';
-import morgan = require("morgan");
-
+import { notFound } from "./middlewares/notFound";
+import { errorHandler } from "./middlewares/errorHandler";
 async function bootStrap() {
     const app = express()
-    app.use(json())
-    app.use(morgan("common"))
-    app.use("/api/v2", appRouter)
-
+    app.use(notFound)
+    app.use(errorHandler)
+    app.use("/api/v1/", baseRouter)
     await prisma.$connect()
     console.log("Pg :: Database connected ")
     const server = app.listen(env.PORT, () => {
@@ -21,13 +20,12 @@ async function bootStrap() {
             .then(() => {
                 console.log("Database disconnected")
             })
-
-        server.close((err) => {
-            if (err) console.error(err.message)
-            console.log("Server stopped running")
-        })
+        // deleteSwagger()
+        // server.close((err) => {
+        //     if (err) console.error(err.message)
+        //     console.log("Server stopped running")
+        // })
     }
-
 
     return {
         app,

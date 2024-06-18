@@ -20,7 +20,7 @@
     "./**/*.ts",
   ],
   "exclude": [
-    "./swagger",
+    "src/swagger",
     "./__tests__",
   ],
 }

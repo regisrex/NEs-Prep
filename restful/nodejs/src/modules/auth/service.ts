@@ -1,7 +1,7 @@
 import { compare, hash } from "bcrypt"
 import { NextFunction, Request, Response } from "express"
 import { IResponse } from "../../@types/IResponse"
-import { createToken } from "../../utils/jwt"
+import { createToken } from "../../utils/authMiddleware"
 import prisma from "../../utils/prisma"
 import { CreateAdminSchema, LoginSchema } from "./schemas"
 
@@ -23,23 +23,14 @@ export async function createAdmin(req: Request, res: Response, next: NextFunctio
         if (rawBody.password != rawBody.confirmPassword) throw new Error("Passwords mismatch")
         const hashedPassword = await hash(rawBody.password, 10);
 
-        const newAdmin = await prisma.admin.create({
+        const newAdmin = await prisma.user.create({
             data: {
                 email: rawBody.email,
                 password: hashedPassword,
-                names: rawBody.fullNames,
-                phone: rawBody.phone
-            },
-            select: {
-                id: true,
-                email: true
+                fullNames: rawBody.fullNames,
             }
         })
-        const token = createToken({
-            id: newAdmin.id,
-            email: newAdmin.email
-        })
-        return res.status(200).send(new IResponse("Admin created successfully", true, { token }))
+        return res.status(200).send(new IResponse("Admin created successfully", true))
 
     } catch (error) {
         next(error)
@@ -48,26 +39,23 @@ export async function createAdmin(req: Request, res: Response, next: NextFunctio
 
 
 export async function login(req: Request, res: Response, next: NextFunction) {
-   /*  #swagger.requestBody = {
-            required: true,
-            content: {
-                "application/json": {
-                    schema: {
-                        $ref: "#/components/schemas/LoginDto"
-                    }  
-                }
-            }
-        } 
-    */
+    /*  #swagger.requestBody = {
+             required: true,
+             content: {
+                 "application/json": {
+                     schema: {
+                         $ref: "#/components/schemas/LoginDto"
+                     }  
+                 }
+             }
+         } 
+     */
     try {
         const rawBody = LoginSchema.parse(req.body)
-        const admin = await prisma.admin.findFirst({
-            where: {
-                OR: [
-                    { email: rawBody.identifier },
-                    { phone: rawBody.identifier }
-                ]
-            },
+        const admin = await prisma.user.findFirst({
+            where:
+                { email: rawBody.identifier },
+
             select: {
                 id: true,
                 email: true,

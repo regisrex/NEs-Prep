@@ -18,7 +18,7 @@ export const transporter = createTransport({
 
 transporter.verify((error, success) => {
     if (error) {
-        console.log(error.message);
+        // console.log(error.message);
     } else if (success) {
         console.info('Smtp service connected');
     }

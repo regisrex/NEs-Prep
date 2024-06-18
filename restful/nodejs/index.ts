@@ -1,6 +1,6 @@
-import bootStrap from "./src/api";
+import bootStrap from "./src/bootStrap";
 
-import './utils/email/email'; // for email setup
+// import './utils/email/email'; // for email setup
 /**
  * bootStrap the app
  */

@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "NE @V1",
-    "description": "Endpoints for Bubbo",
+    "title": "NE",
+    "description": "Endpoints for NE",
     "version": "1.0.0"
   },
   "servers": [
@@ -17,12 +17,12 @@
       "descrption": "Authentication endpoints"
     },
     {
-      "name": "Clients",
-      "descrption": "Clients endpoints"
+      "name": "Students",
+      "descrption": "Students endpoints"
     }
   ],
   "paths": {
-    "/auth/create-admin": {
+    "/auth/signup": {
       "post": {
         "tags": [
           "Auth"
@@ -78,10 +78,10 @@
         }
       }
     },
-    "/clients/": {
+    "/students/": {
       "get": {
         "tags": [
-          "Clients"
+          "Students"
         ],
         "description": "",
         "parameters": [
@@ -109,7 +109,7 @@
       },
       "post": {
         "tags": [
-          "Clients"
+          "Students"
         ],
         "description": "",
         "parameters": [
@@ -146,10 +146,10 @@
         }
       }
     },
-    "/clients/{id}": {
+    "/students/{id}": {
       "get": {
         "tags": [
-          "Clients"
+          "Students"
         ],
         "description": "",
         "parameters": [
@@ -185,7 +185,7 @@
       },
       "put": {
         "tags": [
-          "Clients"
+          "Students"
         ],
         "description": "",
         "parameters": [
@@ -231,7 +231,7 @@
       },
       "delete": {
         "tags": [
-          "Clients"
+          "Students"
         ],
         "description": "",
         "parameters": [
@@ -268,6 +268,12 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
     "schemas": {
       "CreateAdminDto": {
         "type": "object",

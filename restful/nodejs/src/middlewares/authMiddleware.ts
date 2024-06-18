@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 import { IJwtPayload } from "../@types/IJwtPayload";
 import { IResponse } from "../@types/IResponse";
-import { verifyToken } from "../utils/jwt";
+import { verifyToken } from "../utils/authMiddleware";
 
 export async function authMiddleware(req: Request, res: Response, next: NextFunction) {
     try {

@@ -4,7 +4,7 @@ import { env } from "./env";
 
 export function createToken(payload: IJwtPayload): string {
     const token = sign(payload, env.JWT_SECRET, {
-        expiresIn: "2days"
+        expiresIn: "1d"
     })
 
     return token

@@ -1,7 +1,5 @@
 import authModule from './auth'
-import clientsModule from './clients'
-
-
+import clientsModule from './students'
 
 export {
     authModule,

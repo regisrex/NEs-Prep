@@ -1,9 +1,10 @@
+import fs from 'fs'
 import swaggerAutoGen from 'swagger-autogen'
-import { env } from '../src/utils/env'
+import { env } from './src/utils/env'
 const doc = {
   info: {
-    title: 'NE @V1',
-    description: 'Endpoints for Bubbo'
+    title: 'NE',
+    description: 'Endpoints for NE'
   },
   servers: [
     {
@@ -18,11 +19,17 @@ const doc = {
       descrption: "Authentication endpoints"
     },
     {
-      name: "Clients",
-      descrption: "Clients endpoints"
+      name: "Students",
+      descrption: "Students endpoints"
     },
   ],
   components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: 'http',
+        scheme: 'bearer'
+      }
+    },
     schemas: {
       CreateAdminDto: {
         fullNames: '',
@@ -69,9 +76,6 @@ const doc = {
 }
 
 const outputFile = './swagger.json'
-const routes = ['./src/router.ts']  
-
-/* NOTE: If you are using the express Router, you must pass in the 'routes' only the
-root file where the route starts, such as index.js, app.js, routes.js, etc ... */
+const routes = ['./src/router.ts']
 
 swaggerAutoGen({ openapi: '3.0.0' })(outputFile, routes, doc)

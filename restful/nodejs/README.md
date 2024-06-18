@@ -34,13 +34,12 @@ And checkout more scripts for building, testing,etc in `package.json`
 
 
 ### modules
-- clients
-- invoices
-- ~~rooms~~
+- students
+- users
 
 ___
 
-Nov 2023   - *Author*: [@regisrex](https://regisndizihiwe.me) 
+Jun 2024   - *Author*: [@regisrex](https://regisndizihiwe.me) 
 
 
 
