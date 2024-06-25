@@ -15,3 +15,6 @@ spring:
     database-plaform: org.hibernate.dialect.PostgreSQLDialect
   app:
     jwt-secret: "mfAUgxcMaZ2D6TIB2uv85nSBDDDTSTpI6yomfnrWF3YmfAUgxcMaZ2D6TIB2uv85nSBDDDTSTpI6yomfnrWF3Y"
+logging:
+  level:
+    web: trace

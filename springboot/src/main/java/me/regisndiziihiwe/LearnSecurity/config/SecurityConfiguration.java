@@ -29,10 +29,12 @@ public class SecurityConfiguration {
                         "/v3/api-docs/*",
                         "/v3/api-docs",
                         "/swagger-ui/*",
+                        "/api/v1/customers",
+                        "/api/v1/transactions",
                         "/api/v1/auth/signup",
                         "/api/v1/auth/login").permitAll()
                         .anyRequest()
-                        .authenticated())
+                        .permitAll())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

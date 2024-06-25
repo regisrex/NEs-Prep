@@ -1,5 +1,6 @@
 package me.regisndiziihiwe.LearnSecurity.books;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import me.regisndiziihiwe.LearnSecurity.models.Book;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/books")
+@Hidden
 public class BooksController {
 
 
